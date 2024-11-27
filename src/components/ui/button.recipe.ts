@@ -17,7 +17,7 @@ export const buttonRecipe = defineRecipe({
     // Font
     // fontFamily: "Filson Pro",
     fontWeight: 700,
-    fontSize: "20px",
+    fontSize: { base: "14px", md: "20px" },
     lineHeight: "150%",
   },
   variants: {

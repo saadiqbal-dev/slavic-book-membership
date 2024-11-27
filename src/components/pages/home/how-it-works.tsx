@@ -18,27 +18,35 @@ function Step({
   children: React.ReactNode;
 }) {
   return (
-    <VStack>
+    <VStack alignItems={{ base: "flex-start", md: "center" }}>
       <Heading
         position="relative"
-        mt="14px"
-        fontSize="32px"
+        mt={{ md: "14px", base: 0 }}
+        ms={{ base: "22px", md: 0 }}
+        fontSize={{ md: "32px", base: "16px" }}
         fontWeight={700}
         lineHeight="140%"
+        textAlign={{ base: "left", md: "center" }}
       >
         Step 0{count}
         <Box
           position="absolute"
-          bottom="100%"
-          left="50%"
-          fontSize="48px"
-          bg="#FDF4E6"
-          transform="translateX(-50%)"
-        >
-          •
-        </Box>
+          w="24px"
+          h="24px"
+          bg={"#000"}
+          rounded="full"
+          left={{ base: "-32px", md: "50%" }}
+          top={{ base: "50%", md: "-16px" }}
+          transform={{ base: "translateY(-50%)", md: "translate(-50%, -50%)" }}
+          border="4px solid #fdf4e6"
+        />
       </Heading>
-      <Text fontSize="20px" lineHeight="150%" textAlign={"center"}>
+      <Text
+        fontSize={{ md: "20px", base: "16px" }}
+        lineHeight="150%"
+        textAlign={{ base: "left", md: "center" }}
+        ms={{ base: "22px", md: 0 }}
+      >
         {children}
       </Text>
     </VStack>
@@ -47,10 +55,19 @@ function Step({
 
 export default function HowItWorks() {
   return (
-    <Box w="100%" pt="112px" pb="148px" position={"relative"}>
+    <Box
+      w="100%"
+      pt={{ md: "112px", base: "48px" }}
+      pb={{ md: "148px", base: "48px" }}
+      position={"relative"}
+    >
       <Container display={"flex"} flexDir={"column"} gap="80px" maxW="1320px">
         <VStack gap="16px">
-          <Text fontSize={"16px"} fontWeight={"600"} lineHeight={"150%"}>
+          <Text
+            fontWeight={"700"}
+            lineHeight="150%"
+            fontSize={{ base: "14px", md: "16px" }}
+          >
             Tagline
           </Text>
 
@@ -63,30 +80,50 @@ export default function HowItWorks() {
           >
             <Heading
               as="h3"
-              fontSize={"48px"}
-              fontWeight={"700"}
-              lineHeight={"150%"}
-              textAlign={"center"}
+              fontSize={{ base: "24px", md: "48px" }}
+              fontWeight={700}
+              maxW="944px"
+              textAlign="center"
+              lineHeight={"120%"}
             >
               How it Works
             </Heading>
             <Text
-              fontSize={"18px"}
-              fontWeight={"400"}
+              fontSize={{ base: "14px", md: "18px" }}
               lineHeight={"150%"}
               textAlign={"center"}
+              maxW="768px"
+              width="100%"
+              marginTop="8px"
             >
               Explore how we deliver joy to your doorstep every month.
               Understand the magic behind our personalized recommendations.
             </Text>
           </Flex>
-          <Button>
+          <Button width={{ base: "100%", md: "auto" }}>
             Start Getting Books Now <FaArrowRight />
           </Button>
         </VStack>
-        <Box width="100%">
-          <Box width="100%" height="3px" bg="black" />
-          <Grid templateColumns={"repeat(3, 1fr)"} gap="40px">
+        <Box width="100%" position={"relative"}>
+          <Box
+            width="100%"
+            height="3px"
+            bg="black"
+            display={{ base: "none", md: "block" }}
+          />
+          <Box
+            width="3px"
+            height="100%"
+            bg="black"
+            display={{ base: "block", md: "none" }}
+            position="absolute"
+            left="0"
+            right="0"
+          />
+          <Grid
+            templateColumns={{ md: "repeat(3, 1fr)", base: "repeat(1, 1fr)" }}
+            gap="12px"
+          >
             <Step count={1}>Tell us your child&apos; age</Step>
             <Step count={2}>
               Receive two or three curated hardcover books monthly.

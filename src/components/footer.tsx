@@ -4,12 +4,12 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <Container w="100%" py="112px" maxW="1320px">
+    <Container w="100%" py={{ md: "112px", base: "48px" }} maxW="1320px">
       <VStack gap={"32px"}>
         <VStack gap={"24px"}>
           <Text
             as="h2"
-            fontSize="56px"
+            fontSize={{ base: "24px", md: "56px" }}
             fontWeight={"700"}
             lineHeight={"120%"}
             textAlign={"center"}
@@ -22,14 +22,13 @@ export default function Footer() {
               style={{
                 fontStyle: "italic",
                 fontWeight: "350",
-                fontSize: "56px",
               }}
             >
               Try One Box!
             </span>
           </Text>
           <Text
-            fontSize={"20px"}
+            fontSize={{ base: "14px", md: "20px" }}
             fontWeight={"400"}
             lineHeight={"150%"}
             textAlign={"center"}
@@ -40,7 +39,7 @@ export default function Footer() {
             test out the quality and value of the books before subscribing.
           </Text>
         </VStack>
-        <Button>
+        <Button w={{ base: "100%", md: "auto" }}>
           Try One Book Now <FaArrowRight />
         </Button>
       </VStack>

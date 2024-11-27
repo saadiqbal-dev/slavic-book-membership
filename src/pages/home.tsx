@@ -6,31 +6,33 @@ import Importance from "@/components/pages/home/importance";
 import ExploreByAge from "@/components/pages/home/explore-by-age";
 import HowItWorks from "@/components/pages/home/how-it-works";
 
+function Seperator() {
+  return (
+    <Image
+      src="/assets/seperator.webp"
+      alt="seperator"
+      mt="-32px"
+      w="100%"
+      zIndex={5}
+      h={{ base: "124px", md: "auto" }}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <VStack>
       <Hero />
-      <Image
-        src="/assets/seperator.webp"
-        alt="seperator"
-        mt="-32px"
-        w="100%"
-        zIndex={5}
-      />
+      <Seperator />
       <SocialProof />
-      <Image
-        src="/assets/seperator.webp"
-        alt="seperator"
-        mt="-124px"
-        w="100%"
-        zIndex={5}
-      />
+      <Seperator />
       <ExploreByAge />
       <Box
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
         position="relative"
+        transform={{ base: "scale(0.9)", md: "scale(1)" }}
       >
         <Image src="/assets/seperator-2.png" alt="seperator" w="926px" />
         <Image
@@ -38,22 +40,16 @@ export default function Home() {
           alt="ship"
           position="absolute"
           top="24px"
-          left="-24px"
+          left={{ md: "-24px", base: "0px" }}
           transform="translate(-50%, -50%)"
-          width="200px"
-          height="200px"
+          width={{ md: "200px", base: "69px" }}
+          height={{ md: "200px", base: "69px" }}
         />
       </Box>
       <InTheBox />
       <Importance />
       <HowItWorks />
-      <Image
-        src="/assets/seperator.webp"
-        alt="seperator"
-        mt="-124px"
-        w="100%"
-        zIndex={5}
-      />
+      <Seperator />
     </VStack>
   );
 }

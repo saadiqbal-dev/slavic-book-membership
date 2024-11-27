@@ -12,6 +12,7 @@ body {
   padding: 0;
   background: #fdf4e6;
   color: #000000;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Cloud Animation */
@@ -61,4 +62,14 @@ body {
 
 .cloud2 {
   animation: floatingCloudAlt2 3s ease-in-out infinite;
+}
+
+.responsive-icon {
+  width: 48px;
+  height: 48px;
+
+  @media (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 }

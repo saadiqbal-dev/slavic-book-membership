@@ -6,6 +6,7 @@ import Logo from "../assets/logo.svg";
 import { FaArrowRight } from "react-icons/fa6";
 import { BsChevronDown } from "react-icons/bs";
 import { useCallback, useState } from "react";
+import { BiMenu } from "react-icons/bi";
 
 type MenuItem = {
   label: string;
@@ -99,26 +100,26 @@ export default function MainNav() {
         </Link>
 
         {/* Desktop Middle */}
-        <Flex gap="8" fontSize="5" lineHeight="150%">
+        <Flex
+          gap="8"
+          fontSize="5"
+          lineHeight="150%"
+          display={{ base: "none", md: "flex" }}
+        >
           {menuItems.map((item, index) => (
             <MenuLink item={item} key={index} />
           ))}
         </Flex>
 
         {/* Desktop Right */}
-        <Button>
+        <Button display={{ base: "none", md: "flex" }}>
           Get Started <FaArrowRight />
         </Button>
+
         {/* Mobile Menu Button */}
-        {/* <Button
-        variant="ghost"
-        w="12"
-        h="12"
-        p="0"
-        display={{ base: "flex", md: "none" }}
-        >
-        <BiMenu size={24} />
-        </Button> */}
+        <Button visual="ghost" display={{ base: "flex", md: "none" }}>
+          <BiMenu size={24} />
+        </Button>
       </Container>
     </HStack>
   );

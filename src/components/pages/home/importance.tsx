@@ -10,7 +10,13 @@ import {
 
 export default function Importance() {
   return (
-    <Box bg="white" w="100%" py="112px" position="relative" overflow="clip">
+    <Box
+      bg="white"
+      w="100%"
+      py={{ md: "112px", base: "48px" }}
+      position="relative"
+      overflow="clip"
+    >
       <Image
         src="/assets/alphabet-bg.png"
         width="100%"
@@ -25,9 +31,10 @@ export default function Importance() {
       />
       <Image
         src="/assets/plane.png"
-        width="400px"
-        left={0}
-        top={"42px"}
+        width={{ md: "400px", base: "250px" }}
+        height={{ md: "auto", base: "40px" }}
+        left={{ md: "0", base: "-140px" }}
+        top={{ md: "42px", base: "60px" }}
         position="absolute"
         objectFit="contain"
         alt="plane"
@@ -35,7 +42,7 @@ export default function Importance() {
       <Container
         display={"flex"}
         flexDir={"column"}
-        gap={"80px"}
+        gap={{ md: "80px", base: "24px" }}
         alignItems="center"
         maxW="1320px"
       >
@@ -44,24 +51,26 @@ export default function Importance() {
             src="/assets/planet-2.png"
             position="absolute"
             alt="planet"
-            left="100%"
-            top="0"
+            // left="100%"
+            // top="0"
+            left={{ md: "100%", base: "85%" }}
+            top={{ md: "0", base: "-20px" }}
             transform={"translateY(-50%)"}
-            width="168px"
-            height="168px"
+            width={{ md: "168px", base: "60px" }}
+            height={{ md: "168px", base: "60px" }}
             objectFit={"cover"}
           />
           <Heading
             as="h3"
-            fontSize={"48px"}
-            fontWeight={"700"}
+            fontSize={{ base: "24px", md: "48px" }}
+            fontWeight={700}
             lineHeight={"150%"}
             textAlign={"center"}
           >
             Why It's Important?
           </Heading>
           <Text
-            fontSize={"18px"}
+            fontSize={{ base: "14px", md: "18px" }}
             fontWeight={"400"}
             lineHeight={"150%"}
             textAlign={"center"}
@@ -73,7 +82,7 @@ export default function Importance() {
           </Text>
         </VStack>
         <Grid
-          templateColumns={"repeat(2, 1fr)"}
+          templateColumns={{ sm: "repeat(2, 1fr)", base: "repeat(1, 1fr)" }}
           gap={"12px"}
           position="relative"
         >
@@ -82,7 +91,7 @@ export default function Importance() {
             width="100%"
             height="100%"
             objectFit="cover"
-            rounded="24px"
+            rounded={{ sm: "24px", base: "16px" }}
             alt="importance-1"
           />
           <Image
@@ -97,7 +106,7 @@ export default function Importance() {
           />
           <Grid
             templateColumns="repeat(2, 1fr)"
-            templateRows="repeat(3, 1fr)"
+            templateRows={{ sm: "repeat(3, 1fr)", base: "repeat(2, 1fr)" }}
             gap="12px"
           >
             <Image
@@ -105,7 +114,7 @@ export default function Importance() {
               width="100%"
               height="100%"
               objectFit="cover"
-              rounded="24px"
+              rounded={{ sm: "24px", base: "16px" }}
               alt="importance-2"
             />
             <Image
@@ -113,7 +122,7 @@ export default function Importance() {
               width="100%"
               height="100%"
               objectFit="cover"
-              rounded="24px"
+              rounded={{ sm: "24px", base: "16px" }}
               alt="importance-3"
             />
             <Image
@@ -122,8 +131,8 @@ export default function Importance() {
               height="100%"
               objectFit="cover"
               gridColumn="span 2"
-              gridRow="span 2"
-              rounded="24px"
+              gridRow={{ sm: "span 2", base: "span 1" }}
+              rounded={{ sm: "24px", base: "16px" }}
               alt="importance-4"
             />
           </Grid>

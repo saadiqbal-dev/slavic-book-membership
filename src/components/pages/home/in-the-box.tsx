@@ -24,7 +24,7 @@ function Feature({ children }: { children: React.ReactNode }) {
     <Flex
       gap="24px"
       alignItems="center"
-      fontSize="24px"
+      fontSize={{ base: "16px", md: "24px" }}
       lineHeight="150%"
       textTransform={"capitalize"}
     >
@@ -35,10 +35,19 @@ function Feature({ children }: { children: React.ReactNode }) {
 
 export default function InTheBox() {
   return (
-    <Box w="100%" py="64px" position={"relative"}>
-      <Container display={"flex"} flexDir={"column"} gap="80px" maxW="1320px">
-        <VStack>
-          <Text fontSize={"16px"} fontWeight={"600"} lineHeight={"150%"}>
+    <Box w="100%" py={{ md: "64px", base: "48px" }} position={"relative"}>
+      <Container
+        display={"flex"}
+        flexDir={"column"}
+        gap={{ md: "80px", base: "24px" }}
+        maxW="1320px"
+      >
+        <VStack gap={{ base: "12px" }}>
+          <Text
+            fontSize={{ base: "14px", md: "16px" }}
+            fontWeight={"600"}
+            lineHeight={"150%"}
+          >
             Tagline
           </Text>
           <HStack justify={"flex-start"}>
@@ -47,19 +56,19 @@ export default function InTheBox() {
               w={"100%"}
               maxW={"700px"}
               flexDir={"column"}
-              gap={"24px"}
+              gap={{ md: "24px", base: "12px" }}
             >
               <Heading
                 as="h3"
-                fontSize={"48px"}
-                fontWeight={"700"}
+                fontSize={{ base: "24px", md: "48px" }}
+                fontWeight={700}
                 lineHeight={"150%"}
                 textAlign={"center"}
               >
                 What&apos;s In The Box?
               </Heading>
               <Text
-                fontSize={"18px"}
+                fontSize={{ base: "14px", md: "18px" }}
                 fontWeight={"400"}
                 lineHeight={"150%"}
                 textAlign={"center"}
@@ -71,18 +80,20 @@ export default function InTheBox() {
             </Flex>
             <Image
               position={"absolute"}
-              right={"92px"}
-              top={"40px"}
+              right={{ md: "92px", base: "10px" }}
+              top={{ md: "40px", base: "130px" }}
               src={"/assets/rainbow.png"}
-              width={"207px"}
-              height={"185px"}
+              width={{ md: "207px", base: "45px" }}
+              height={{ md: "185px", base: "45px" }}
               alt="rainbow"
+              transform={{ md: "rotate(0deg)", base: "rotate(-15deg)" }}
+              objectFit={"contain"}
             />
           </HStack>
         </VStack>
         <Grid
-          templateColumns={"repeat(2, 1fr)"}
-          gap={"80px"}
+          templateColumns={{ md: "repeat(2, 1fr)", base: "repeat(1, 1fr)" }}
+          gap={{ md: "80px", base: "24px" }}
           position="relative"
         >
           <Image
@@ -94,15 +105,22 @@ export default function InTheBox() {
             width="83px"
             height="89px"
             objectFit="cover"
+            display={{ base: "none", md: "block" }}
           />
-          <Image src={"/assets/kid.png"} alt="kid" />
+          <Image
+            src={"/assets/kid.png"}
+            alt="kid"
+            height={{ md: "auto", base: "305px" }}
+            width={{ md: "auto", base: "100%" }}
+            rounded="24px"
+          />
           <VStack
             alignItems="flex-start"
             gap={"32px"}
-            py="32px"
+            py={{ md: "32px", base: "8px" }}
             justifyContent={"space-between"}
           >
-            <VStack alignItems="flex-start" gap="24px">
+            <VStack alignItems="flex-start" gap={{ base: "16px", md: "24px" }}>
               <Feature>
                 <Car /> An original collection of 7-10 playthings
               </Feature>
@@ -117,12 +135,13 @@ export default function InTheBox() {
                 expert Q&A
               </Feature>
             </VStack>
-            <VStack alignItems="flex-start" gap="24px">
+            <VStack alignItems="flex-start" gap={{ base: "16px", md: "24px" }}>
               <Heading
                 as="h3"
-                fontSize="24px"
+                fontSize={{ base: "16px", md: "24px" }}
                 fontWeight="500"
                 lineHeight="150%"
+                mb={"8px"}
               >
                 Along with these, we offer
               </Heading>

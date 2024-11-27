@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <>
       <Container
-        padding="7rem 4rem 4rem 4rem"
+        padding="32px 16px 32px 16px"
         display={"flex"}
         flexDirection={"column"}
         alignItems={"center"}
@@ -29,10 +29,10 @@ export default function Hero() {
           <Image
             src="/assets/cloud.webp"
             position="absolute"
-            top="-16px"
-            left="100%"
-            width="122px"
-            height="74px"
+            top={{ base: "100%", md: "-16px" }}
+            left={{ base: "0px", md: "100%" }}
+            width={{ base: "32px", md: "122px" }}
+            height={{ base: "32px", md: "74px" }}
             objectFit={"contain"}
             className="cloud2"
             alt="cloud"
@@ -40,20 +40,21 @@ export default function Hero() {
           <Image
             src="/assets/sun.png"
             position="absolute"
-            top="-16px"
-            right="100%"
-            width="150px"
-            height="150px"
+            top={{ base: "-10px", md: "-16px" }}
+            right={{ base: "100%", md: "100%" }}
+            width={{ base: "40px", md: "150px" }}
+            height={{ base: "40px", md: "150px" }}
+            transform={{ base: "translateX(100%)", md: "translateX(-50%)" }}
             objectFit={"contain"}
             alt="sun"
           />
           <Image
             src="/assets/cloud.webp"
             position="absolute"
-            top="100%"
-            right="100%"
-            width="122px"
-            height="74px"
+            top={{ base: "0", md: "100%" }}
+            right={{ base: "24px", md: "100%" }}
+            width={{ base: "32px", md: "122px" }}
+            height={{ base: "32px", md: "74px" }}
             objectFit={"contain"}
             className="cloud2"
             alt="cloud"
@@ -61,19 +62,23 @@ export default function Hero() {
           <Image
             src="/assets/static-cloud.png"
             position="absolute"
-            top="100%"
-            right="-200px"
-            width="180px"
-            height="32px"
+            top={{ base: "102px", md: "100%" }}
+            right={{ base: "24px", md: "-200px" }}
+            width={{ base: "36px", md: "180px" }}
+            height={{ base: "6px", md: "32px" }}
             objectFit={"contain"}
             alt="cloud"
           />
-          <Text fontWeight={"700"} lineHeight="150%">
+          <Text
+            fontWeight={"700"}
+            lineHeight="150%"
+            fontSize={{ base: "14px", md: "16px" }}
+          >
             Tagline
           </Text>
           <Heading
             as="h1"
-            fontSize="48px"
+            fontSize={{ base: "24px", md: "48px" }}
             fontWeight={700}
             maxW="944px"
             textAlign="center"
@@ -83,7 +88,7 @@ export default function Hero() {
           </Heading>
           <Text
             as="h2"
-            fontSize="18px"
+            fontSize={{ base: "14px", md: "18px" }}
             lineHeight={"150%"}
             textAlign={"center"}
             maxW="768px"
@@ -98,6 +103,7 @@ export default function Hero() {
         </VStack>
         <HStack position="relative">
           <Box
+            display={{ base: "none", md: "block" }}
             position="absolute"
             left="-16px"
             top="100%"
@@ -111,22 +117,24 @@ export default function Hero() {
           </Button>
         </HStack>
       </Container>
-      <Box position="relative">
+      <Box position="relative" pb={{ base: "32px", md: 0 }}>
         <Image
           src="/assets/astranaut.png"
           position="absolute"
-          top="50%"
-          right="20%"
+          top={{ md: "50%", base: "50%" }}
+          right={{ md: "20%", base: "32px" }}
+          width={{ md: "auto", base: "57px" }}
+          height={{ md: "auto", base: "54px" }}
           objectFit={"cover"}
-          alt="cloud"
+          alt="astranaut"
         />
         <Image
           src="/assets/cloud.webp"
           position="absolute"
-          top="40%"
-          left="20%"
-          width="122px"
-          height="74px"
+          top={{ base: 0, md: "40%" }}
+          left={{ base: "24px", md: "20%" }}
+          width={{ base: "32px", md: "122px" }}
+          height={{ base: "32px", md: "74px" }}
           objectFit={"contain"}
           className="cloud"
           alt="cloud"
@@ -134,16 +142,21 @@ export default function Hero() {
         <Image
           src="/assets/cloud.webp"
           position="absolute"
-          top="20%"
-          right="20%"
-          width="168px"
-          height="102px"
+          top={{ base: 0, md: "40%" }}
+          right={{ base: "48px", md: "20%" }}
+          width={{ base: "32px", md: "122px" }}
+          height={{ base: "32px", md: "74px" }}
           objectFit={"contain"}
           transform="scaleX(-1)"
           className="cloud1"
           alt="cloud"
         />
-        <Image src="/assets/hero-image.webp" alt="hero-image" />
+        <Image
+          src="/assets/hero-image.webp"
+          alt="hero-image"
+          w="100%"
+          height={{ base: "200px", md: "100%" }}
+        />
       </Box>
     </>
   );

@@ -6,6 +6,7 @@ export default function Truck() {
       height="48"
       viewBox="0 0 48 48"
       fill="none"
+      className="responsive-icon"
     >
       <mask
         id="mask0_1_2481"
