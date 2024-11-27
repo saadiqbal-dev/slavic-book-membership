@@ -1,0 +1,64 @@
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #fdf4e6;
+  color: #000000;
+}
+
+/* Cloud Animation */
+@keyframes floatingCloud {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatingCloudAlt1 {
+  0% {
+    transform: translateY(-15px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatingCloudAlt2 {
+  0% {
+    transform: translateY(-7px);
+  }
+  50% {
+    transform: translateY(-22px);
+  }
+  100% {
+    transform: translateY(-7px);
+  }
+}
+
+.cloud {
+  animation: floatingCloud 3s ease-in-out infinite;
+}
+
+.cloud1 {
+  animation: floatingCloudAlt1 3s ease-in-out infinite;
+}
+
+.cloud2 {
+  animation: floatingCloudAlt2 3s ease-in-out infinite;
+}
