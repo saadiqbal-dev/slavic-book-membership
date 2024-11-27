@@ -19,6 +19,8 @@ import Cancel from "@/icons/cancel";
 import { FaArrowRight } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
+import { useModalStore } from "@/store/modal";
+
 function Feature({ children }: { children: React.ReactNode }) {
   return (
     <Flex
@@ -34,6 +36,7 @@ function Feature({ children }: { children: React.ReactNode }) {
 }
 
 export default function InTheBox() {
+  const { setIsOpen } = useModalStore();
   return (
     <Box w="100%" py={{ md: "64px", base: "48px" }} position={"relative"}>
       <Container
@@ -157,7 +160,10 @@ export default function InTheBox() {
                 <Cancel /> Cancel Or Skip Any Time
               </Feature>
             </VStack>
-            <Button width={{ base: "100%", md: "auto" }}>
+            <Button
+              width={{ base: "100%", md: "auto" }}
+              onClick={() => setIsOpen(true)}
+            >
               Start Getting Books Now <FaArrowRight />
             </Button>
           </VStack>

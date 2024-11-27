@@ -1,8 +1,10 @@
 import { Container, VStack, Text } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa6";
+import { useModalStore } from "@/store/modal";
 
 export default function Footer() {
+  const { setIsOpen } = useModalStore();
   return (
     <Container w="100%" py={{ md: "112px", base: "48px" }} maxW="1320px">
       <VStack gap={"32px"}>
@@ -39,7 +41,10 @@ export default function Footer() {
             test out the quality and value of the books before subscribing.
           </Text>
         </VStack>
-        <Button w={{ base: "100%", md: "auto" }}>
+        <Button
+          w={{ base: "100%", md: "auto" }}
+          onClick={() => setIsOpen(true)}
+        >
           Try One Book Now <FaArrowRight />
         </Button>
       </VStack>

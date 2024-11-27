@@ -1,12 +1,13 @@
 import { HStack, Container, Image, Link, Flex, Box } from "@chakra-ui/react";
 import { Button } from "./ui/button";
-// import { BiMenu } from "react-icons/bi";
 
 import Logo from "../assets/logo.svg";
 import { FaArrowRight } from "react-icons/fa6";
 import { BsChevronDown } from "react-icons/bs";
 import { useCallback, useState } from "react";
 import { BiMenu } from "react-icons/bi";
+
+import { useModalStore } from "@/store/modal";
 
 type MenuItem = {
   label: string;
@@ -79,8 +80,12 @@ function MenuLink({ item }: { item: MenuItem }) {
 }
 
 export default function MainNav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { setIsOpen: setModalOpen } = useModalStore();
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
+
   return (
-    <HStack borderBottom="1px solid #000">
+    <HStack borderBottom="1px solid #000" position="relative">
       <Container
         py={{ base: 2, md: 4 }}
         display="flex"
@@ -112,15 +117,67 @@ export default function MainNav() {
         </Flex>
 
         {/* Desktop Right */}
-        <Button display={{ base: "none", md: "flex" }}>
+        <Button
+          onClick={() => setModalOpen(true)}
+          display={{ base: "none", md: "flex" }}
+        >
           Get Started <FaArrowRight />
         </Button>
 
         {/* Mobile Menu Button */}
-        <Button visual="ghost" display={{ base: "flex", md: "none" }}>
+        <Button
+          visual="ghost"
+          display={{ base: "flex", md: "none" }}
+          onClick={toggle}
+        >
           <BiMenu size={24} />
         </Button>
       </Container>
+      {isOpen && (
+        <Box
+          position="absolute"
+          bottom="-10px"
+          left="50%"
+          width="calc(100% - 32px)"
+          transform="translate(-50%, 100%)"
+          bg="white"
+          rounded="24px"
+          p="12px 16px"
+          border="2px solid #A46804"
+          display={"flex"}
+          flexDir={"column"}
+          gap="8px"
+          alignItems={"flex-start"}
+          boxShadow="0px 1px 27.1px 3px rgba(164, 104, 4, 0.15)"
+          zIndex={10}
+        >
+          {menuItems.map((item, index) => (
+            <>
+              <Button
+                key={index}
+                visual="ghost"
+                w="full"
+                justifyContent={"left"}
+              >
+                {item.label}
+                {item.items && <BsChevronDown />}
+              </Button>
+              {item.items?.map((subitem, index1) => (
+                <Button
+                  key={index1}
+                  visual="ghost"
+                  w="full"
+                  justifyContent={"left"}
+                  ms="32px"
+                  pt={0}
+                >
+                  - {subitem.label}
+                </Button>
+              ))}
+            </>
+          ))}
+        </Box>
+      )}
     </HStack>
   );
 }

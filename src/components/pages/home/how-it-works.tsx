@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa6";
+import { useModalStore } from "@/store/modal";
 
 function Step({
   count,
@@ -54,6 +55,7 @@ function Step({
 }
 
 export default function HowItWorks() {
+  const { setIsOpen } = useModalStore();
   return (
     <Box
       w="100%"
@@ -100,7 +102,10 @@ export default function HowItWorks() {
               Understand the magic behind our personalized recommendations.
             </Text>
           </Flex>
-          <Button width={{ base: "100%", md: "auto" }}>
+          <Button
+            width={{ base: "100%", md: "auto" }}
+            onClick={() => setIsOpen(true)}
+          >
             Start Getting Books Now <FaArrowRight />
           </Button>
         </VStack>

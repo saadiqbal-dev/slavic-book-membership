@@ -22,46 +22,51 @@ export default function SubscriptionModal() {
       onOpenChange={(e) => setIsOpen(e.open)}
     >
       <DialogContent
-        p="56px"
+        p={{ base: "24px", md: "56px" }}
         borderRadius={"32px"}
         border={"2px solid #DBA247"}
         background={"#FDF4E6"}
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
-        gap="24px"
+        gap={{ base: "16px", md: "24px" }}
+        w={{ base: "calc(100% - 32px)", md: "auto" }}
       >
         <VStack>
           <Text
-            padding="8px 24px"
+            padding={{ md: "8px 24px", base: "4px 24px" }}
             display={"flex"}
             alignItems="center"
             justifyContent="center"
             borderRadius="32px"
             border="1px solid black"
-            fontSize="16px"
             lineHeight="150%"
+            fontSize={{ base: "14px", md: "16px" }}
           >
             Waitlist
           </Text>
           <Heading
-            fontSize="56px"
             fontWeight="700"
             lineHeight="150%"
             textAlign="center"
+            fontSize={{ base: "24px", md: "56px" }}
           >
             Coming Soon!
           </Heading>
         </VStack>
         <VStack>
-          <Heading fontSize="32px" lineHeight="150%" textAlign="center">
+          <Heading
+            fontSize={{ md: "32px", base: "20px" }}
+            lineHeight="150%"
+            textAlign="center"
+          >
             Join our waitlist!
           </Heading>
           <Text
-            fontSize="20px"
             textAlign="center"
             lineHeight="150%"
             fontWeight="400"
+            fontSize={{ base: "14px", md: "20px" }}
           >
             We&apos;re working hard to go live! Join our waiting list and
             we&apos;ll notify you ASAP
@@ -73,14 +78,18 @@ export default function SubscriptionModal() {
           alignItems={"center"}
           gap={"16px"}
           w={"100%"}
-          px={"24px"}
+          px={{ base: "px", md: "24px" }}
         >
           <HStack gap={"8px"}>
-            <Image src="/assets/group.png" alt="group" w="184px" />
+            <Image
+              src="/assets/group.png"
+              alt="group"
+              w={{ md: "184px", base: "120px" }}
+            />
             <Text
               color="#298100"
               textAlign={"center"}
-              fontSize={"16px"}
+              fontSize={{ base: "14px", md: "16px" }}
               fontWeight={"400"}
               lineHeight={"150%"}
             >
@@ -89,7 +98,7 @@ export default function SubscriptionModal() {
           </HStack>
           <Text
             textAlign={"center"}
-            fontSize={"16px"}
+            fontSize={{ base: "14px", md: "16px" }}
             fontWeight={"400"}
             lineHeight={"150%"}
           >
