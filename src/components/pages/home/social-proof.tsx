@@ -8,7 +8,13 @@ import {
   Box,
   Flex,
 } from "@chakra-ui/react";
+
 import ReviewCard from "./review-card";
+
+import EmblaCarousel from "./EmblaCarousel";
+import { EmblaOptionsType } from "embla-carousel";
+
+const OPTIONS: EmblaOptionsType = { dragFree: false, loop: true };
 
 type Review = {
   text: string;
@@ -90,10 +96,13 @@ export default function SocialProof() {
         <HStack position="relative">
           <Image
             src="/assets/planet.png"
-            width="168.5px"
-            height="168.5px"
+            width={{ base: "90px", md: "168.5px" }}
+            height={{ base: "90px", md: "168.5px" }}
             objectFit={"cover"}
             alt="planet"
+            position={{ base: "absolute", md: "relative" }}
+            left="0"
+            top="-58px"
           />
           <Image
             src="/assets/pencil-blocks.png"
@@ -105,13 +114,17 @@ export default function SocialProof() {
             top="64px"
             left="100%"
           />
-          <VStack>
-            <Text fontWeight={"700"} lineHeight="150%">
+          <VStack gap={{ base: "20px", md: "24px" }}>
+            <Text
+              fontWeight={"700"}
+              lineHeight="150%"
+              fontSize={{ base: "14px", md: "16px" }}
+            >
               Social Proof
             </Text>
             <Heading
               as="h2"
-              fontSize="48px"
+              fontSize={{ base: "24px", md: "48px" }}
               fontWeight={700}
               maxW="770px"
               textAlign="center"
@@ -119,13 +132,21 @@ export default function SocialProof() {
             >
               Thousands of trusted reviews from people like you
             </Heading>
-            <Text fontSize="18px" lineHeight="150%">
+            <Text fontSize={{ base: "14px", md: "18px" }} lineHeight="150%">
               Over 5 million Russian Books shipped
             </Text>
           </VStack>
         </HStack>
-        <HStack alignItems={"flex-start"} gap="32px" w="100%">
-          <Flex flexDir={"column"} gap="32px">
+        {/* Desktop */}
+        <HStack
+          alignItems={"flex-start"}
+          justifyContent={"center"}
+          gap="32px"
+          w="100%"
+          display={{ base: "none", md: "flex" }}
+          flexWrap={"wrap"}
+        >
+          <Flex flexShrink={0} flexDir={"column"} gap="32px">
             {reviews.slice(0, 2).map((item, index) => (
               <ReviewCard
                 name={item.name}
@@ -159,6 +180,23 @@ export default function SocialProof() {
             ))}
           </Flex>
         </HStack>
+
+        {/* Mobile */}
+        <Box display={{ base: "block", md: "none" }}>
+          <EmblaCarousel
+            slides={reviews.map((item, index) => (
+              <ReviewCard
+                name={item.name}
+                text={item.text}
+                image={item.image}
+                position={item.position}
+                key={index}
+                fullWidth
+              />
+            ))}
+            options={OPTIONS}
+          />
+        </Box>
       </Container>
     </Box>
   );

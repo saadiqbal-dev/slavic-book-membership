@@ -57,6 +57,7 @@ export default function InTheBox() {
               maxW={"700px"}
               flexDir={"column"}
               gap={{ md: "24px", base: "12px" }}
+              zIndex={5}
             >
               <Heading
                 as="h3"
@@ -88,6 +89,7 @@ export default function InTheBox() {
               alt="rainbow"
               transform={{ md: "rotate(0deg)", base: "rotate(-15deg)" }}
               objectFit={"contain"}
+              zIndex={0}
             />
           </HStack>
         </VStack>
@@ -155,7 +157,7 @@ export default function InTheBox() {
                 <Cancel /> Cancel Or Skip Any Time
               </Feature>
             </VStack>
-            <Button>
+            <Button width={{ base: "100%", md: "auto" }}>
               Start Getting Books Now <FaArrowRight />
             </Button>
           </VStack>

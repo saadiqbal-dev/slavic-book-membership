@@ -5,11 +5,13 @@ export default function ReviewCard({
   image,
   name,
   position,
+  fullWidth,
 }: {
   text: string;
   image: string;
   name: string;
   position: string;
+  fullWidth?: boolean;
 }) {
   return (
     <Box
@@ -21,7 +23,7 @@ export default function ReviewCard({
       flexDir="column"
       gap="24px"
       color="white"
-      maxW="400px"
+      maxW={fullWidth ? "100vw" : "360px"}
       w="100%"
     >
       <Image
@@ -34,7 +36,7 @@ export default function ReviewCard({
       <Text fontStyle="italic" fontSize="18px" lineHeight="150% ">
         {text}
       </Text>
-      <Flex gap="16px">
+      <Flex gap="16px" marginTop="auto">
         <Image
           src={image}
           width="48px"

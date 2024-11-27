@@ -10,7 +10,8 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import ArrorwRight from "./arrow-right";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 
 function AgeCard({
   image,
@@ -38,6 +39,7 @@ function AgeCard({
         objectFit={"cover"}
         roundedTop="24px"
         maxH="233px"
+        minH="233px"
         alt={title}
       />
       <Box padding="32px">
@@ -59,65 +61,69 @@ function AgeCard({
   );
 }
 
+const ageGroups = [
+  "6-12 Months",
+  "1 Year Old",
+  "2 Years Old",
+  "3 Years Old",
+  "4 Years Old",
+];
+
 export default function ExploreByAge() {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = useCallback(() => {
+    setShowDropdown((prev) => !prev);
+  }, []);
 
   return (
     <Container
       display={"flex"}
       flexDir={"column"}
-      gap={"64px"}
+      gap={{ md: "64px", base: "24px" }}
       alignItems="center"
       w="100%"
       py="64px"
       mt="-32px"
       maxW="1320px"
     >
-      <VStack gap="24px">
-        <Text fontSize={"16px"} fontWeight={"600"} lineHeight={"150%"}>
+      <VStack gap={{ base: "12px", md: "24px" }}>
+        <Text
+          fontSize={{ base: "14px", md: "16px" }}
+          fontWeight={"600"}
+          lineHeight={"150%"}
+        >
           Category
         </Text>
         <Heading
           as="h3"
-          fontSize={"48px"}
           fontWeight={"700"}
           lineHeight={"150%"}
           textAlign={"center"}
+          fontSize={{ base: "24px", md: "48px" }}
         >
           Explore by Kids Age
         </Heading>
       </VStack>
-      <HStack bg="#333" p="24px" borderRadius={"full"} position="relative">
-        <Button
-          visual={selectedTab === 0 ? "solid" : "dashed"}
-          onClick={() => setSelectedTab(0)}
-        >
-          6-12 Months
-        </Button>
-        <Button
-          visual={selectedTab === 1 ? "solid" : "dashed"}
-          onClick={() => setSelectedTab(1)}
-        >
-          1 Year Old
-        </Button>
-        <Button
-          visual={selectedTab === 2 ? "solid" : "dashed"}
-          onClick={() => setSelectedTab(2)}
-        >
-          2 Years Old
-        </Button>
-        <Button
-          visual={selectedTab === 3 ? "solid" : "dashed"}
-          onClick={() => setSelectedTab(3)}
-        >
-          3 Years Old
-        </Button>
-        <Button
-          visual={selectedTab === 4 ? "solid" : "dashed"}
-          onClick={() => setSelectedTab(4)}
-        >
-          4 Years Old
-        </Button>
+
+      {/* Desktop */}
+      <HStack
+        bg="#333"
+        p="24px"
+        borderRadius={"full"}
+        position="relative"
+        display={{ base: "none", md: "flex" }}
+      >
+        {ageGroups.map((item, index) => (
+          <Button
+            key={index}
+            visual={selectedTab === index ? "solid" : "dashed"}
+            onClick={() => setSelectedTab(index)}
+          >
+            {item}
+          </Button>
+        ))}
         <Box
           position="absolute"
           left="100%"
@@ -128,7 +134,60 @@ export default function ExploreByAge() {
           <ArrorwRight />
         </Box>
       </HStack>
-      <Grid templateColumns={"repeat(3, 1fr)"} gap={"32px"}>
+
+      {/* Mobile */}
+      <Box
+        display={{ base: "block", md: "none" }}
+        width="100%"
+        position="relative"
+      >
+        <Button
+          width="100%"
+          justifyContent={"space-between"}
+          onClick={toggleDropdown}
+        >
+          {ageGroups[selectedTab]} <BsChevronDown />
+        </Button>
+        {showDropdown && (
+          <Box
+            position="absolute"
+            bottom="-10px"
+            left="0"
+            width="100%"
+            transform="translateY(100%)"
+            bg="white"
+            rounded="24px"
+            p="12px 16px"
+            border="2px solid #A46804"
+            display={"flex"}
+            flexDir={"column"}
+            gap="8px"
+            alignItems={"flex-start"}
+            boxShadow="0px 1px 27.1px 3px rgba(164, 104, 4, 0.15)"
+          >
+            {ageGroups.map((item, index) => (
+              <Button
+                key={index}
+                onClick={() => {
+                  setSelectedTab(index);
+                  setShowDropdown(false);
+                }}
+                visual="ghost"
+                w="full"
+                justifyContent={"left"}
+                bg={selectedTab === index ? "#FED711" : "white"}
+              >
+                {item}
+              </Button>
+            ))}
+          </Box>
+        )}
+      </Box>
+
+      <Grid
+        templateColumns={{ md: "repeat(3, 1fr)", base: "repeat(1, 1fr)" }}
+        gap={{ base: "16px", md: "32px" }}
+      >
         <AgeCard
           image="/assets/age-box-1.png"
           tag="1-3 Months"
