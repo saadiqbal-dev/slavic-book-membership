@@ -6,7 +6,12 @@ import { useModalStore } from "@/store/modal";
 export default function Footer() {
   const { setIsOpen } = useModalStore();
   return (
-    <Container w="100%" py={{ md: "112px", base: "48px" }} maxW="1320px">
+    <Container
+      w="100%"
+      py={{ md: "112px", base: "48px" }}
+      maxW="1320px"
+      as="footer"
+    >
       <VStack gap={"32px"}>
         <VStack gap={"24px"}>
           <Text
@@ -20,14 +25,9 @@ export default function Footer() {
             marginTop="8px"
           >
             Not Ready for a Subscription? —{" "}
-            <span
-              style={{
-                fontStyle: "italic",
-                fontWeight: "350",
-              }}
-            >
+            <Text as="span" fontStyle="italic" fontWeight="350">
               Try One Box!
-            </span>
+            </Text>
           </Text>
           <Text
             fontSize={{ base: "14px", md: "20px" }}

@@ -6,26 +6,26 @@ import Importance from "@/components/pages/home/importance";
 import ExploreByAge from "@/components/pages/home/explore-by-age";
 import HowItWorks from "@/components/pages/home/how-it-works";
 
-function Seperator() {
-  return (
-    <Image
-      src="/assets/seperator.webp"
-      alt="seperator"
-      mt="-32px"
-      w="100%"
-      zIndex={5}
-      h={{ base: "124px", md: "auto" }}
-    />
-  );
-}
-
 export default function Home() {
   return (
     <VStack>
       <Hero />
-      <Seperator />
+      <Image
+        src="/assets/seperator.webp"
+        alt="seperator"
+        w="100%"
+        zIndex={5}
+        h={{ base: "124px", md: "auto" }}
+      />
       <SocialProof />
-      <Seperator />
+      <Image
+        src="/assets/seperator.webp"
+        alt="seperator"
+        w="100%"
+        zIndex={5}
+        mt="-124px"
+        h={{ base: "124px", md: "auto" }}
+      />
       <ExploreByAge />
       <Box
         display={"flex"}
@@ -49,7 +49,13 @@ export default function Home() {
       <InTheBox />
       <Importance />
       <HowItWorks />
-      <Seperator />
+      <Image
+        src="/assets/seperator.webp"
+        alt="seperator"
+        w="100%"
+        zIndex={5}
+        h={{ base: "124px", md: "auto" }}
+      />
     </VStack>
   );
 }

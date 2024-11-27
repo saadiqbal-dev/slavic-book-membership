@@ -144,7 +144,7 @@ export default function MainNav() {
           rounded="24px"
           p="12px 16px"
           border="2px solid #A46804"
-          display={"flex"}
+          display={{ md: "flex", base: "none" }}
           flexDir={"column"}
           gap="8px"
           alignItems={"flex-start"}

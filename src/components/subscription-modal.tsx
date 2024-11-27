@@ -11,9 +11,71 @@ import {
 import { useModalStore } from "@/store/modal";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
+import { useState } from "react";
+import Airtable from "airtable";
 
 export default function SubscriptionModal() {
   const { isOpen, setIsOpen } = useModalStore();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState(0);
+
+  const handleSubmit = async () => {
+    if (!email) {
+      setError("Please enter your email");
+      return;
+    }
+
+    // validate email using regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email");
+      return;
+    }
+
+    if (age <= 0) {
+      setError("Please enter a valid age");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      setError("");
+      setIsSuccess(false);
+      const base = new Airtable({
+        apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
+      }).base("apptZnsRzrVRJzN60");
+
+      await base("waitlist").create(
+        [
+          {
+            fields: {
+              email: email,
+              age: age,
+            },
+          },
+        ],
+        (err, records) => {
+          if (err) {
+            setError("Something went wrong: " + err);
+            return;
+          }
+          console.log(records);
+          setEmail("");
+          setAge(0);
+        }
+      );
+    } catch (error) {
+      setError("Something went wrong: " + error);
+    } finally {
+      setIsLoading(false);
+      setIsSuccess(true);
+    }
+  };
+
   return (
     <DialogRoot
       placement="center"
@@ -118,6 +180,8 @@ export default function SubscriptionModal() {
             background={"white"}
             borderRadius={"8px"}
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             placeholder="Your Children's Age"
@@ -125,9 +189,22 @@ export default function SubscriptionModal() {
             background={"white"}
             width={"100%"}
             borderRadius={"8px"}
+            type="number"
+            value={age > 0 ? age : ""}
+            onChange={(e) => setAge(Number(e.target.value))}
           />
-          <Button w={"100%"} mt={"16px"}>
-            Join The Waitlist <FaArrowRight />
+
+          {error && <Text color="red.500">{error}</Text>}
+          {isSuccess && <Text color="green.500">Submitted Successfully!</Text>}
+
+          <Button w={"100%"} mt={"16px"} onClick={() => handleSubmit()}>
+            {isLoading ? (
+              <>Submitting...</>
+            ) : (
+              <>
+                Join The Waitlist <FaArrowRight />
+              </>
+            )}
           </Button>
         </Box>
       </DialogContent>
