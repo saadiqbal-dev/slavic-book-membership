@@ -18,22 +18,22 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
   {
     label: "Home",
-    href: "/",
+    href: "/#",
   },
   {
     label: "About Us",
-    href: "/about-us",
+    href: "/#",
   },
   {
     label: "Testimonials",
-    href: "/testimonials",
+    href: "/#",
   },
   {
     label: "Categories",
     items: [
       {
         label: "Books",
-        href: "/books",
+        href: "/#",
       },
     ],
   },
@@ -63,13 +63,19 @@ function MenuLink({ item }: { item: MenuItem }) {
           w="100%"
           minW="200px"
           border="1px solid black"
-          p="2"
+          rounded="24px"
+          p="4"
           bg="#fdf4e6"
-          transform={"translateX(-50%)"}
+          transform={"translate(-50%, 10px)"}
           userSelect={"none"}
+          zIndex={10}
         >
           {item.items.map((subitem, index) => (
-            <Link key={`${subitem.label}-${index}`} href={subitem.href}>
+            <Link
+              key={`${subitem.label}-${index}`}
+              href={subitem.href}
+              w="100%"
+            >
               {subitem.label}
             </Link>
           ))}
@@ -144,7 +150,7 @@ export default function MainNav() {
           rounded="24px"
           p="12px 16px"
           border="2px solid #A46804"
-          display={{ md: "flex", base: "none" }}
+          display={{ md: "none", base: "flex" }}
           flexDir={"column"}
           gap="8px"
           alignItems={"flex-start"}
@@ -153,26 +159,34 @@ export default function MainNav() {
         >
           {menuItems.map((item, index) => (
             <>
-              <Button
+              <Link
                 key={index}
-                visual="ghost"
-                w="full"
-                justifyContent={"left"}
+                href={item.href}
+                asChild
+                onClick={() => item.href === "/#" && setIsOpen(false)}
               >
-                {item.label}
-                {item.items && <BsChevronDown />}
-              </Button>
-              {item.items?.map((subitem, index1) => (
-                <Button
-                  key={index1}
-                  visual="ghost"
-                  w="full"
-                  justifyContent={"left"}
-                  ms="32px"
-                  pt={0}
-                >
-                  - {subitem.label}
+                <Button visual="ghost" w="full" justifyContent={"left"}>
+                  {item.label}
+                  {item.items && <BsChevronDown />}
                 </Button>
+              </Link>
+              {item.items?.map((subitem, index1) => (
+                <Link
+                  key={index1}
+                  href={subitem.href}
+                  asChild
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Button
+                    visual="ghost"
+                    w="full"
+                    justifyContent={"left"}
+                    ms="32px"
+                    pt={0}
+                  >
+                    - {subitem.label}
+                  </Button>
+                </Link>
               ))}
             </>
           ))}

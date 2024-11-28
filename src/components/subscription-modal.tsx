@@ -11,7 +11,7 @@ import {
 import { useModalStore } from "@/store/modal";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Airtable from "airtable";
 
 export default function SubscriptionModal() {
@@ -75,6 +75,16 @@ export default function SubscriptionModal() {
       setIsSuccess(true);
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
 
   return (
     <DialogRoot
