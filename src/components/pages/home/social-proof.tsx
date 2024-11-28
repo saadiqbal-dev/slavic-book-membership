@@ -74,7 +74,7 @@ export default function SocialProof() {
       overflow={"clip"}
     >
       <Image
-        src="/assets/alphabet-bg.png"
+        src="/assets/alphabet-bg.webp"
         width="100%"
         maxW="1550px"
         height="100%"
