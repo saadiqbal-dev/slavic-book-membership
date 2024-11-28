@@ -19,6 +19,18 @@ export const buttonRecipe = defineRecipe({
     fontWeight: 700,
     fontSize: { base: "14px", md: "20px" },
     lineHeight: "150%",
+
+    _focus: {
+      outline: "none",
+    },
+
+    _active: {
+      opacity: 0.8,
+    },
+
+    _hover: {
+      opacity: 0.8,
+    },
   },
   variants: {
     visual: {

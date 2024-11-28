@@ -86,7 +86,7 @@ export default function InTheBox() {
               position={"absolute"}
               right={{ md: "92px", base: "10px" }}
               top={{ md: "40px", base: "130px" }}
-              src={"/assets/rainbow.png"}
+              src={"/assets/rainbow.webp"}
               width={{ md: "207px", base: "45px" }}
               height={{ md: "185px", base: "45px" }}
               alt="rainbow"
@@ -102,7 +102,7 @@ export default function InTheBox() {
           position="relative"
         >
           <Image
-            src="/assets/butterfly.png"
+            src="/assets/butterfly.webp"
             position="absolute"
             left="-12px"
             top="-12px"
@@ -111,9 +111,10 @@ export default function InTheBox() {
             height="89px"
             objectFit="cover"
             display={{ base: "none", md: "block" }}
+            alt="butterfly"
           />
           <Image
-            src={"/assets/kid.png"}
+            src={"/assets/kid.webp"}
             alt="kid"
             height={{ md: "auto", base: "305px" }}
             width={{ md: "auto", base: "100%" }}

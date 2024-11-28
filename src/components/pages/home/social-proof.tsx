@@ -105,7 +105,7 @@ export default function SocialProof() {
             top="-58px"
           />
           <Image
-            src="/assets/pencil-blocks.png"
+            src="/assets/pencil-blocks.webp"
             width="168.5px"
             height="168.5px"
             objectFit={"cover"}

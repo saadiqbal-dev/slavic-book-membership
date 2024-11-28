@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://slavic-book-membership.vercel.app/sitemap.xml

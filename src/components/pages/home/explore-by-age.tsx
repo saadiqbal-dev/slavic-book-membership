@@ -189,19 +189,19 @@ export default function ExploreByAge() {
         gap={{ base: "16px", md: "32px" }}
       >
         <AgeCard
-          image="/assets/age-box-1.png"
+          image="/assets/age-box-1.webp"
           tag="1-3 Months"
           title="Early Learning Essentials, Books for Tiny Tots"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         />
         <AgeCard
-          image="/assets/age-box-2.png"
+          image="/assets/age-box-2.webp"
           tag="4-7 Months"
           title="Sensory Stimulation, Books for Curious Minds"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         />
         <AgeCard
-          image="/assets/age-box-3.png"
+          image="/assets/age-box-3.webp"
           tag="8-12 Months"
           title="Building Blocks of Language, Books for Little Learners"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."

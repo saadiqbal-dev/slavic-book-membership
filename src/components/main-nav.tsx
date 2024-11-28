@@ -30,6 +30,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Categories",
+    href: "/#",
     items: [
       {
         label: "Books",
@@ -43,18 +44,19 @@ function MenuLink({ item }: { item: MenuItem }) {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen((prev) => !prev), []);
   return (
-    <Link
-      key={`${item.label}`}
-      href={item.href}
-      position="relative"
-      onClick={toggle}
-      userSelect={"none"}
-      fontSize="20px"
-      display="flex"
-      alignItems="center"
-      gap="8px"
-    >
-      {item.label} {item.items && <BsChevronDown />}
+    <Box position="relative">
+      <Link
+        key={`${item.label}`}
+        href={item.href}
+        onClick={toggle}
+        userSelect={"none"}
+        fontSize="20px"
+        display="flex"
+        alignItems="center"
+        gap="8px"
+      >
+        {item.label} {item.items && <BsChevronDown />}
+      </Link>
       {item.items && open && (
         <Box
           position="absolute"
@@ -75,13 +77,14 @@ function MenuLink({ item }: { item: MenuItem }) {
               key={`${subitem.label}-${index}`}
               href={subitem.href}
               w="100%"
+              onClick={() => setOpen(false)}
             >
               {subitem.label}
             </Link>
           ))}
         </Box>
       )}
-    </Link>
+    </Box>
   );
 }
 
@@ -135,6 +138,7 @@ export default function MainNav() {
           visual="ghost"
           display={{ base: "flex", md: "none" }}
           onClick={toggle}
+          aria-label="Menu"
         >
           <BiMenu size={24} />
         </Button>

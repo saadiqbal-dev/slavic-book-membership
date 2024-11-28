@@ -119,7 +119,7 @@ export default function Hero() {
       </Container>
       <Box position="relative" pb={{ base: "32px", md: 0 }}>
         <Image
-          src="/assets/astranaut.png"
+          src="/assets/astranaut.webp"
           position="absolute"
           top={{ md: "50%", base: "50%" }}
           right={{ md: "20%", base: "32px" }}

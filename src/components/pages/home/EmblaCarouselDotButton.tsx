@@ -13,7 +13,7 @@ type UseDotButtonType = {
 };
 
 export const useDotButton = (
-  emblaApi: EmblaCarouselType | undefined,
+  emblaApi: EmblaCarouselType | undefined
 ): UseDotButtonType => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -23,7 +23,7 @@ export const useDotButton = (
       if (!emblaApi) return;
       emblaApi.scrollTo(index);
     },
-    [emblaApi],
+    [emblaApi]
   );
 
   const onInit = useCallback((emblaApi: EmblaCarouselType) => {
@@ -55,7 +55,7 @@ export const DotButton: React.FC<PropType> = (props) => {
   const { children, ...restProps } = props;
 
   return (
-    <button type="button" {...restProps}>
+    <button type="button" aria-label="Dot Button" {...restProps}>
       {children}
     </button>
   );

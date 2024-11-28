@@ -18,7 +18,7 @@ export default function Importance() {
       overflow="clip"
     >
       <Image
-        src="/assets/alphabet-bg.png"
+        src="/assets/alphabet-bg.webp"
         width="100%"
         maxW="1550px"
         height="100%"
@@ -87,7 +87,7 @@ export default function Importance() {
           position="relative"
         >
           <Image
-            src="/assets/importance-1.png"
+            src="/assets/importance-1.webp"
             width="100%"
             height="100%"
             objectFit="cover"
@@ -99,7 +99,7 @@ export default function Importance() {
             left={"100%"}
             bottom={"0"}
             transform="translateX(20px)"
-            src={"/assets/rainbow.png"}
+            src={"/assets/rainbow.webp"}
             width={"207px"}
             height={"185px"}
             alt="rainbow"
@@ -110,7 +110,7 @@ export default function Importance() {
             gap="12px"
           >
             <Image
-              src="/assets/importance-2.png"
+              src="/assets/importance-2.webp"
               width="100%"
               height="100%"
               objectFit="cover"
@@ -118,7 +118,7 @@ export default function Importance() {
               alt="importance-2"
             />
             <Image
-              src="/assets/importance-3.png"
+              src="/assets/importance-3.webp"
               width="100%"
               height="100%"
               objectFit="cover"
@@ -126,7 +126,7 @@ export default function Importance() {
               alt="importance-3"
             />
             <Image
-              src="/assets/importance-4.png"
+              src="/assets/importance-4.webp"
               width="100%"
               height="100%"
               objectFit="cover"
