@@ -66,7 +66,7 @@ export default function SubscriptionModal() {
           console.log(records);
           setEmail("");
           setAge(0);
-        }
+        },
       );
     } catch (error) {
       setError("Something went wrong: " + error);
