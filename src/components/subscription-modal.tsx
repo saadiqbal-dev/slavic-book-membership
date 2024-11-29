@@ -11,14 +11,13 @@ import {
 import { useModalStore } from "@/store/modal";
 import { Button } from "./ui/button";
 import { FaArrowRight } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Airtable from "airtable";
 
 export default function SubscriptionModal() {
   const { isOpen, setIsOpen } = useModalStore();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
@@ -29,7 +28,6 @@ export default function SubscriptionModal() {
       return;
     }
 
-    // validate email using regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email");
@@ -44,47 +42,28 @@ export default function SubscriptionModal() {
     try {
       setIsLoading(true);
       setError("");
-      setIsSuccess(false);
+
       const base = new Airtable({
         apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
       }).base("apptZnsRzrVRJzN60");
 
-      await base("waitlist").create(
-        [
-          {
-            fields: {
-              email: email,
-              age: age,
-            },
+      await base("waitlist").create([
+        {
+          fields: {
+            email: email,
+            age: age,
           },
-        ],
-        (err, records) => {
-          if (err) {
-            setError("Something went wrong: " + err);
-            return;
-          }
-          console.log(records);
-          setEmail("");
-          setAge(0);
-        }
-      );
+        },
+      ]);
+
+      setEmail("");
+      setAge(0);
     } catch (error) {
       setError("Something went wrong: " + error);
     } finally {
       setIsLoading(false);
-      setIsSuccess(true);
     }
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      const timer = setTimeout(() => {
-        setIsSuccess(false);
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isSuccess]);
 
   return (
     <DialogRoot
@@ -165,7 +144,7 @@ export default function SubscriptionModal() {
               fontWeight={"400"}
               lineHeight={"150%"}
             >
-              + 5264
+              + 523
             </Text>
           </HStack>
           <Text
@@ -180,7 +159,7 @@ export default function SubscriptionModal() {
                 color: "#298100",
               }}
             >
-              +5264
+              +523
             </span>{" "}
             people joined!
           </Text>
@@ -205,9 +184,14 @@ export default function SubscriptionModal() {
           />
 
           {error && <Text color="red.500">{error}</Text>}
-          {isSuccess && <Text color="green.500">Submitted Successfully!</Text>}
 
-          <Button w={"100%"} mt={"16px"} onClick={() => handleSubmit()}>
+          <Button
+            w={"100%"}
+            mt={"16px"}
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
             {isLoading ? (
               <>Submitting...</>
             ) : (

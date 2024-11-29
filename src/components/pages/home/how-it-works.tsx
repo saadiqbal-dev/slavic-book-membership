@@ -124,10 +124,12 @@ export default function HowItWorks() {
             position="absolute"
             left="0"
             right="0"
+            mx={"32px"}
           />
           <Grid
             templateColumns={{ md: "repeat(3, 1fr)", base: "repeat(1, 1fr)" }}
             gap="12px"
+            mx={{ base: "32px", md: "0" }}
           >
             <Step count={1}>Tell us your child&apos; age</Step>
             <Step count={2}>

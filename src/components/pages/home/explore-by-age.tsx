@@ -61,13 +61,7 @@ function AgeCard({
   );
 }
 
-const ageGroups = [
-  "6-12 Months",
-  "1 Year Old",
-  "2 Years Old",
-  "3 Years Old",
-  "4 Years Old",
-];
+const ageGroups = ["0-5 Years", "6-9 Years"];
 
 export default function ExploreByAge() {
   const [selectedTab, setSelectedTab] = useState(0);
