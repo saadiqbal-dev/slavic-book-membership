@@ -1,4 +1,12 @@
-import { HStack, Container, Image, Link, Flex, Box } from "@chakra-ui/react";
+import {
+  HStack,
+  Container,
+  Image,
+  Link,
+  Flex,
+  Box,
+  Text,
+} from "@chakra-ui/react";
 import { Button } from "./ui/button";
 
 import { FaArrowRight } from "react-icons/fa6";
@@ -131,6 +139,9 @@ export default function Header() {
       >
         <Link
           href="/"
+          _hover={{
+            textDecoration: "none",
+          }}
           _focus={{
             outline: "none",
           }}
@@ -143,6 +154,9 @@ export default function Header() {
             p="0px 7.333px 0px 6.667px"
             objectFit="contain"
           />
+          <Text fontWeight={"500"} fontSize="18px" fontFamily={"Almendra"}>
+            Slavic Books for Kids
+          </Text>
         </Link>
 
         {/* Desktop Middle */}
