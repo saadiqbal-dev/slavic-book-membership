@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import MainNav from "./main-nav";
+import Header from "./header";
 import Footer from "./footer";
 
 interface LayoutProps {
@@ -15,7 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
         flexDirection="column"
         overflowX="hidden"
       >
-        <MainNav />
+        <Header />
 
         {/* Main content */}
         {children}

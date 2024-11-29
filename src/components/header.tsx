@@ -115,7 +115,7 @@ function MenuLink({ item }: { item: MenuItem }) {
   );
 }
 
-export default function MainNav() {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { setIsOpen: setModalOpen } = useModalStore();
   const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
