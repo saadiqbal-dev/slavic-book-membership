@@ -1,14 +1,4 @@
-import {
-  Box,
-  VStack,
-  HStack,
-  Text,
-  Flex,
-  Image,
-  Container,
-  Grid,
-  Heading,
-} from "@chakra-ui/react";
+import {Box, Container, Flex, Grid, Heading, HStack, Image, Text, VStack,} from "@chakra-ui/react";
 import Car from "@/icons/car";
 import Book from "@/icons/book";
 import Collection from "@/icons/collection";
@@ -16,10 +6,10 @@ import Phone from "@/icons/phone";
 import Truck from "@/icons/truck";
 import Return from "@/icons/return";
 import Cancel from "@/icons/cancel";
-import { FaArrowRight } from "react-icons/fa6";
-import { Button } from "@/components/ui/button";
+import {FaArrowRight} from "react-icons/fa6";
+import {Button} from "@/components/ui/button";
 
-import { useModalStore } from "@/store/modal";
+import {useModalStore} from "@/store/modal";
 
 function Feature({ children }: { children: React.ReactNode }) {
   return (
@@ -36,7 +26,7 @@ function Feature({ children }: { children: React.ReactNode }) {
 }
 
 export default function InTheBox() {
-  const { setIsOpen } = useModalStore();
+  const { setIsOpen, setButtonId } = useModalStore();
   return (
     <Box w="100%" py={{ md: "64px", base: "48px" }} position={"relative"}>
       <Container
@@ -163,7 +153,10 @@ export default function InTheBox() {
             </VStack>
             <Button
               width={{ base: "100%", md: "auto" }}
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                setIsOpen(true);
+                setButtonId("inTheBoxButton")
+              }}
             >
               Start Getting Books Now <FaArrowRight />
             </Button>

@@ -1,21 +1,13 @@
-import { DialogContent, DialogRoot } from "@/components/ui/dialog";
-import {
-  VStack,
-  Text,
-  Heading,
-  HStack,
-  Image,
-  Input,
-  Box,
-} from "@chakra-ui/react";
-import { useModalStore } from "@/store/modal";
-import { Button } from "./ui/button";
-import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
+import {DialogContent, DialogRoot} from "@/components/ui/dialog";
+import {Box, Heading, HStack, Image, Input, Text, VStack,} from "@chakra-ui/react";
+import {useModalStore} from "@/store/modal";
+import {Button} from "./ui/button";
+import {FaArrowRight} from "react-icons/fa6";
+import {useState} from "react";
 import Airtable from "airtable";
 
 export default function SubscriptionModal() {
-  const { isOpen, setIsOpen } = useModalStore();
+  const { isOpen, buttonId, setIsOpen } = useModalStore();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,16 +34,15 @@ export default function SubscriptionModal() {
     try {
       setIsLoading(true);
       setError("");
-
       const base = new Airtable({
         apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
-      }).base("apptZnsRzrVRJzN60");
-
-      await base("waitlist").create([
+      }).base("app4dZNFgEHDQIqqo");
+      await base("Members").create([
         {
           fields: {
             email: email,
             age: age,
+            buttonId: buttonId,
           },
         },
       ]);
@@ -62,6 +53,7 @@ export default function SubscriptionModal() {
       setError("Something went wrong: " + error);
     } finally {
       setIsLoading(false);
+      setIsOpen(false);
     }
   };
 
