@@ -1,19 +1,11 @@
-import {
-  Box,
-  Container,
-  Heading,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { Button } from "@/components/ui/button";
-import { BsChevronRight } from "react-icons/bs";
+import {Box, Container, Heading, HStack, Image, Text, VStack,} from "@chakra-ui/react";
+import {Button} from "@/components/ui/button";
+import {BsChevronRight} from "react-icons/bs";
 import ArrorwRight from "./arrow-right";
-import { useModalStore } from "@/store/modal";
+import {useModalStore} from "@/store/modal";
 
 export default function Hero() {
-  const { setIsOpen } = useModalStore();
+  const { setIsOpen, setButtonId } = useModalStore();
   return (
     <>
       <Container
@@ -111,7 +103,10 @@ export default function Hero() {
           >
             <ArrorwRight />
           </Box>
-          <Button onClick={() => setIsOpen(true)}>Subscribe Now</Button>
+          <Button onClick={() => {
+            setIsOpen(true);
+            setButtonId('Main Button')
+          }}>Subscribe Now</Button>
           <Button visual="ghost">
             Learn More <BsChevronRight />
           </Button>
