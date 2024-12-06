@@ -167,7 +167,7 @@ export default function Header() {
         <Button
           onClick={() => {
             setModalOpen(true);
-            setButtonId('navBarButton')
+            setButtonId('Navbar button')
           }}
           display={{ base: "none", md: "flex" }}
         >

@@ -105,7 +105,7 @@ export default function Hero() {
           </Box>
           <Button onClick={() => {
             setIsOpen(true);
-            setButtonId('mainButton')
+            setButtonId('Main Button')
           }}>Subscribe Now</Button>
           <Button visual="ghost">
             Learn More <BsChevronRight />
