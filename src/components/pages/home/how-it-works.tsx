@@ -1,15 +1,7 @@
-import { Button } from "@/components/ui/button";
-import {
-  Box,
-  Container,
-  Text,
-  Heading,
-  Flex,
-  VStack,
-  Grid,
-} from "@chakra-ui/react";
-import { FaArrowRight } from "react-icons/fa6";
-import { useModalStore } from "@/store/modal";
+import {Button} from "@/components/ui/button";
+import {Box, Container, Flex, Grid, Heading, Text, VStack,} from "@chakra-ui/react";
+import {FaArrowRight} from "react-icons/fa6";
+import {useModalStore} from "@/store/modal";
 
 function Step({
   count,
@@ -55,7 +47,7 @@ function Step({
 }
 
 export default function HowItWorks() {
-  const { setIsOpen } = useModalStore();
+  const { setIsOpen, setButtonId } = useModalStore();
   return (
     <Box
       w="100%"
@@ -104,7 +96,10 @@ export default function HowItWorks() {
           </Flex>
           <Button
             width={{ base: "100%", md: "auto" }}
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              setIsOpen(true);
+              setButtonId('How it works')
+            }}
           >
             Start Getting Books Now <FaArrowRight />
           </Button>

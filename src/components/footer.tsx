@@ -1,10 +1,10 @@
-import { Container, VStack, Text, Box } from "@chakra-ui/react";
-import { Button } from "@/components/ui/button";
-import { FaArrowRight } from "react-icons/fa6";
-import { useModalStore } from "@/store/modal";
+import {Box, Container, Text, VStack} from "@chakra-ui/react";
+import {Button} from "@/components/ui/button";
+import {FaArrowRight} from "react-icons/fa6";
+import {useModalStore} from "@/store/modal";
 
 export default function Footer() {
-  const { setIsOpen } = useModalStore();
+  const { setIsOpen, setButtonId } = useModalStore();
   return (
     <>
       <Container w="100%" py={{ md: "112px", base: "48px" }} maxW="1320px">
@@ -39,7 +39,10 @@ export default function Footer() {
           </VStack>
           <Button
             w={{ base: "100%", md: "auto" }}
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              setIsOpen(true);
+              setButtonId('Try One button')
+            }}
           >
             Try One Book Now <FaArrowRight />
           </Button>

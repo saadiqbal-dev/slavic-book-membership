@@ -1,21 +1,13 @@
-import {
-  HStack,
-  Container,
-  Image,
-  Link,
-  Flex,
-  Box,
-  Text,
-} from "@chakra-ui/react";
-import { Button } from "./ui/button";
+import {Box, Container, Flex, HStack, Image, Link, Text,} from "@chakra-ui/react";
+import {Button} from "./ui/button";
 
-import { FaArrowRight } from "react-icons/fa6";
-import { BsChevronDown } from "react-icons/bs";
-import { useCallback, useState } from "react";
-import { BiMenu, BiX } from "react-icons/bi";
+import {FaArrowRight} from "react-icons/fa6";
+import {BsChevronDown} from "react-icons/bs";
+import {useCallback, useState} from "react";
+import {BiMenu, BiX} from "react-icons/bi";
 
-import { useModalStore } from "@/store/modal";
-import { AnimatePresence, motion } from "motion/react";
+import {useModalStore} from "@/store/modal";
+import {AnimatePresence, motion} from "motion/react";
 
 type MenuItem = {
   label: string;
@@ -125,7 +117,7 @@ function MenuLink({ item }: { item: MenuItem }) {
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { setIsOpen: setModalOpen } = useModalStore();
+  const { setIsOpen: setModalOpen, setButtonId } = useModalStore();
   const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
 
   return (
@@ -173,7 +165,10 @@ export default function Header() {
 
         {/* Desktop Right */}
         <Button
-          onClick={() => setModalOpen(true)}
+          onClick={() => {
+            setModalOpen(true);
+            setButtonId('Navbar button')
+          }}
           display={{ base: "none", md: "flex" }}
         >
           Get Started <FaArrowRight />
